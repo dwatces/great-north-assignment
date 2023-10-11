@@ -622,3 +622,16 @@ function enqueue_hamburger_menu_script() {
     wp_enqueue_script('hamburger-menu', get_template_directory_uri() . '/js/hamburger-menu.js', array('jquery'), '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_hamburger_menu_script');
+
+function custom_footer_widget_area() {
+    register_sidebar(array(
+        'name' => 'Custom Footer Widget Area',
+        'id' => 'custom-footer-widget',
+        'description' => 'Add your footer logo widget here',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ));
+}
+add_action('widgets_init', 'custom_footer_widget_area');
